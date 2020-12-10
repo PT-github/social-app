@@ -1,0 +1,131 @@
+<template>
+  <view>
+    <uni-nav-bar :statusBar="statusBar" :border="false" @clickLeft="clickLeft" @clickRight="clickRight">
+      <view class="uni-nav-bar-title">
+        <template v-for="(item, index) in tabBars">
+          <view class="uni-nav-bar-title_view" :key="'tabBars' + item.id">
+            <text
+              class="uni-nav-bar_text"
+              :class="{'uni-nav-bar_text--active': tabIndex === index}"
+              @click="handleTabClick(index)"
+              >{{ item.name }}</text>
+            <text class="line" v-if="tabIndex === index"></text>
+          </view>
+        </template>
+      </view>
+      <view class="uni-nav-bar-left" slot="left">
+        <text class="iconfont uni-nav-bar-left_iconfont">&#xe606;</text>
+      </view>
+      <view class="uni-nav-bar-right" slot="right">
+        <text class="iconfont ">&#xe6ca;</text>
+      </view>
+    </uni-nav-bar>
+  </view>
+</template>
+
+<script>
+  // #ifdef APP-NVUE
+  var domModule = weex.requireModule('dom');
+  domModule.addRule('fontFace', {
+    'fontFamily': "uniicons",
+    'src': "url('/static/icon/iconfont.ttf')"
+  });
+  // #endif
+  export default {
+    data() {
+      return {
+        // #ifdef APP-PLUS
+        statusBar: true,
+        // #endif
+        // #ifndef APP-PLUS
+        statusBar: false,
+        // #endif
+        tabIndex: 0,
+        tabBars: [{
+            name: '关注',
+            id: 'guanzhu'
+          },
+          {
+            name: '话题',
+            id: 'huati'
+          },
+        ]
+      }
+    },
+    methods: {
+      handleTabClick (index) {
+        this.tabIndex = index
+      },
+      clickRight () {
+        uni.navigateTo({
+          url: '../../pub/pub'
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+  /* #ifdef APP-NVUE */
+  .iconfont {
+    font-family: uniicons;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  /* #endif */
+  .uni-nav-bar-left {
+    /* #ifdef APP-PLUS */
+    padding-left: 10rpx;
+    /* #endif */
+  }
+
+  .uni-nav-bar-right {
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    /* #ifdef APP-PLUS */
+    padding-right: 10rpx;
+    /* #endif */
+  }
+
+  .iconfont {
+    font-size: 40rpx;
+  }
+
+  .uni-nav-bar-left_iconfont {
+    color: #FF9619;
+  }
+
+  .uni-nav-bar-title {
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: -15rpx;
+  }
+  .uni-nav-bar-title_view {
+    position: relative;
+  }
+  .uni-nav-bar_text {
+    font-size: $uni-font-size-lg;
+    padding: 0 $uni-spacing-col-base;
+    color: $uni-text-color-grey;
+  }
+
+  .uni-nav-bar_text--active {
+    color: $uni-text-color;
+  }
+
+  .line {
+    position: absolute;
+    bottom: 0;
+    left: $uni-spacing-col-base;
+    right: $uni-spacing-col-base;
+    height: 6rpx;
+    background-color: $uni-text-color-active;
+    border-radius: $uni-border-radius-lg;
+    /* #ifdef APP-PLUS */
+    bottom: -10rpx;
+    /* #endif */
+  }
+</style>

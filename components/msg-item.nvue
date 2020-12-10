@@ -1,0 +1,187 @@
+<template>
+  <view class="msg-item">
+    <view class="msg-item-top">
+      <view class="msg-item-top-left msg-item-top_view">
+        <image class="msg-item-top_image" src="~@/static/car/1.jpg" mode="aspectFit" lazy-load></image>
+        <text class="msg-item-top_text">昵称</text>
+      </view>
+      <view class="msg-item-top-right">
+        <view class="msg-item-top-right_view base-border-radius">
+          <text class="iconfont msg-item-top-right_text">&#xe664;关注</text>
+        </view>
+      </view>
+    </view>
+    <view class="msg-item-center">
+      <view class="msg-item-center_view">
+        <text class="msg-item-center_text">有没有什么好的网上兼职，一天20就行了？</text>
+      </view>
+      <view class="msg-item-center_view lg-border-radius">
+        <image class="msg-item-center_image" src="~@/static/car/1.jpg" mode="aspectFit" lazy-load></image>
+        <view class="msg-item-center-play">
+          <text class="iconfont msg-item-center-play_text">&#xe66b;</text>
+        </view>
+        <text class="media-info">20w 次播放 2:47</text>
+      </view>
+    </view>
+    <view class="msg-item-bottom">
+      <view class="msg-item-bottom_view">
+        <view class="msg-item-bottom-item msg-item-bottom-item--space">
+          <text class="iconfont msg-item-bottom-iconfont active">&#xe673;</text>
+          <text class="msg-item-bottom-value active">20</text>
+        </view>
+        <view class="msg-item-bottom-item">
+          <text class="iconfont msg-item-bottom-iconfont">&#xe666;</text>
+          <text class="msg-item-bottom-value">10</text>
+        </view>
+      </view>
+      <view class="msg-item-bottom_view">
+        <view class="msg-item-bottom-item msg-item-bottom-item--space">
+          <text class="iconfont msg-item-bottom-iconfont">&#xe689;</text>
+          <text class="msg-item-bottom-value">20</text>
+        </view>
+        <view class="msg-item-bottom-item">
+          <text class="iconfont msg-item-bottom-iconfont">&#xe67d;</text>
+          <text class="msg-item-bottom-value">10</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  // #ifdef APP-PLUS
+  var domModule = weex.requireModule('dom');
+  domModule.addRule('fontFace', {
+    'fontFamily': "uniicons",
+    'src': "url('/static/icon/iconfont.ttf')"
+  });
+  // #endif
+  export default {
+    data() {
+      return {
+
+      };
+    }
+  }
+</script>
+
+<style lang="scss">
+  /* #ifdef APP-NVUE */
+  .iconfont {
+  	font-family: uniicons;
+  	text-decoration: none;
+  	text-align: center;
+  }
+  /* #endif */
+  .base-border-radius {
+    border-radius: $uni-border-radius-base;
+  }
+  .lg-border-radius {
+    border-radius: $uni-border-radius-lg;
+  }
+  .msg-item {
+    padding: $uni-spacing-row-base;
+  }
+  
+  // top
+  .msg-item-top {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: $uni-spacing-row-base; 
+  }
+
+  .msg-item-top_view {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .msg-item-top_image {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: $uni-border-radius-circle;
+    background-color: rgba(204, 204, 204, .4);
+    margin-right: 20rpx;
+  }
+
+  .msg-item-top_text {
+    font-size: $uni-font-size-lg;
+    color: $uni-text-color-grey;
+  }
+  .msg-item-top-right {
+    align-items: center;
+    justify-content: center;
+  }
+  .msg-item-top-right_view {
+    background-color: #F4F4F4;
+    padding: 3rpx 10rpx;
+  }
+  .msg-item-top-right_text {
+    color:$uni-text-color-grey;
+    font-size: $uni-font-size-lg;
+  }
+  
+  // center
+  .msg-item-center_view {
+    flex-direction: row;
+    overflow: hidden;
+    margin-bottom: $uni-spacing-row-sm;
+    position: relative;
+  }
+  .msg-item-center_text {
+    font-size: $uni-font-size-paragraph;
+    color: $uni-color-paragraph;
+  }
+  .msg-item-center_image {
+    flex: 1;
+    height: 375rpx;
+  }
+  .msg-item-center-play, .media-info {
+    position: absolute;
+  }
+  .msg-item-center-play {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .msg-item-center-play_text {
+    color: #FFFFFF;
+    font-size: 120rpx;
+  }
+  .media-info {
+    right: 10rpx;
+    bottom: 5rpx;
+    color: $uni-text-color-grey;
+    font-size: $uni-font-size-base;
+  }
+  
+  // bottom
+  .msg-item-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .msg-item-bottom_view {
+    flex-direction: row;
+  }
+  .msg-item-bottom-item {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  .msg-item-bottom-item--space {
+    margin-right: $uni-spacing-row-sm;
+  }
+  .msg-item-bottom-value, .msg-item-bottom-iconfont {
+    font-size: $uni-font-size-lg;
+    color: $uni-text-color-grey;
+  }
+  .msg-item-bottom-iconfont {
+    padding-right: 5rpx;
+  }
+  .active {
+    color: $uni-text-color-active;
+  }
+</style>
